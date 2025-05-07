@@ -1,0 +1,33 @@
+# Jika kita perhatikan pada eksekusi read.csv dan hasilnya, terlihat ada kolom dengan prefix X – yaitu X, X.1, X.2, dan seterusnya. Ini terjadi karena read.csv mendeteksi ada nama kolom yang kosong dan lebih dari. Kondisi ini akan secara otomatis "diperbaiki" oleh function read.csv dengan menambahkan prefix X di depan kolom.
+
+# Jika kita tidak menginginkan hal tersebut, kita bisa tambahkan argumen check.names = FALSE pada statement read.csv sehingga konstruksinya menjadi:
+
+# read.csv(…, …, check.names = FALSE)
+# Cobalah lakukan tugas berikut untuk lebih jelasnya.
+
+# Tugas Praktek
+
+# Gantilah bagian […1…]  dengan argumen check.names = FALSE.
+
+# Jika berjalan dengan lancar, maka outputnya akan terlihat sebagai berikut.
+
+# 'data.frame':	267 obs. of  37 variables:
+#  $ TAHUN               : int  2013 2013 2013 2013 2013 2013 2013 2013 2013 2013 ...
+#  $ NAMA PROVINSI       : Factor w/ 1 level "PROVINSI DKI JAKARTA": 1 1 1 1 1 1 1 1 1 1 ...
+#  $ NAMA KABUPATEN/KOTA : Factor w/ 6 levels "JAKARTA BARAT",..: 6 6 6 6 6 6 2 2 2 2 ...
+#  $ NAMA KECAMATAN      : Factor w/ 44 levels "CAKUNG","CEMPAKA PUTIH",..: 22 22 22 21 21 21 9 9 9 9 ...
+#  $ NAMA KELURAHAN      : Factor w/ 267 levels "ANCOL","ANGKE",..: 165 164 163 168 167 166 55 24 195 194 ...
+#  $ LUAS WILAYAH (KM2)  : num  0.91 3.76 3.59 0.59 1.57 1.39 2.58 1.26 1.12 1.14 ...
+#  $ KEPADATAN (JIWA/KM2): int  6779 1705 628 3625 3084 1968 1350 14584 18987 14465 ...
+#  $                     : logi  NA NA NA NA NA NA ...
+#  $                     : logi  NA NA NA NA NA NA ...
+#  $                     : logi  NA NA NA NA NA NA ...
+# Beberapa penjelasan terkait perbedaan hasil di atas dengan hasil pada praktek sebelumnya:
+
+# Nama spasi tidak dijadikan titik.
+# Nama yang kosong tidak diberi tanda X, ini akan menyulitkan ketika kita ingin mereferensikan nama kolom kosong tersebut.
+
+
+#Membaca dataset dengan read.csv dan dimasukkan ke variable penduduk.dki
+penduduk.dki <- read.csv("https://storage.googleapis.com/dqlab-dataset/dkikepadatankelurahan2013.csv", sep=",", check.names = FALSE)
+str(penduduk.dki)
